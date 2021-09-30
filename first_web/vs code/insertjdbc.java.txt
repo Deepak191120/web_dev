@@ -1,0 +1,40 @@
+//creating the table in the database...
+import java.sql.*;
+
+class insertjdbc
+{
+    public static void main(String args[]) 
+    {
+        try 
+        {
+        
+            Class.forName("com.mysql.jdbc.Driver");
+
+            //create a connection
+
+            String url = "jdbc:mysql://localhost:3306/test";
+            String username = "root";
+            String password = "root";
+
+            Connection con = DriverManager.getConnection(url,username,password);
+
+            String q = "create table students(stdId int(8) primary key, name varchar(25),class int(11),section varchar(1),address varchar(100))"; 
+
+            Statement stmt = con.createStatement();
+            stmt.executeUpdate(q);
+
+            System.out.println("Table is created in databases..");
+
+            con.close();
+
+
+        } 
+        catch (Exception e) 
+        {
+            e.printStackTrace();    
+
+        }
+        
+       
+    }
+}
